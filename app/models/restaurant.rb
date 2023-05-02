@@ -7,7 +7,7 @@ class Restaurant < ApplicationRecord
     validates :name, presence: true, uniqueness: { case_sensitive: false }
     validates :description, presence: true, uniqueness: { case_sensitive: false }
     validates :address, presence: true, uniqueness: { case_sensitive: false }
-    validates :city, presence: true, uniqueness: { case_sensitive: false }
+    validates :city, presence: true
 
     
 end
