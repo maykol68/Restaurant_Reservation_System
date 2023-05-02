@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   resources :reservations
-  resources :restaurants
-  
+  resources :restaurants, path: '/'
+
 end
