@@ -3,8 +3,7 @@ class ReservationsController < ApplicationController
 
  
   def index
-    @restaurants = Restaurant.all.order(name: :asc)
-    @reservations = Reservation.all.order(created_at: :asc)
+    @reservations = Reservation.all.order(created_at: :desc)
   end
 
   def show

@@ -4,7 +4,7 @@ class RestaurantsController < ApplicationController
  
   def index
 
-    @restaurants = Restaurant.all.with_attached_photo.order(created_at: :desc)
+    @restaurants = Restaurant.all.with_attached_photo.order(created_at: :asc)
     
   end
 
