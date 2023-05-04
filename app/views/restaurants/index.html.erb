@@ -5,8 +5,8 @@
 
   <div id="restaurants" class="min-w-full">
     <%= form_with url: restaurants_path, method: :get do |form| %>
-    <%= form.label :search %>
-      <%= form.text_field :query_text, placeholder: t('search'), onChange: 'this.form.requestSubmit()', value: params[:query_text]%>
+      <%= form.label :search %>
+      <%= form.text_field :query_text, placeholder: t('search'), onChange: 'this.form.requestSubmit()', value: params[:query_text]%><br><br>
       <%= render @restaurants %>
     <% end%>
   </div>
