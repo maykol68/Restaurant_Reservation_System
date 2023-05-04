@@ -6,6 +6,9 @@ class RestaurantsController < ApplicationController
 
     @restaurants = Restaurant.all.with_attached_photo.order(created_at: :desc)
     
+    if params[:query_text].present?
+      @restaurants = @restaurants.search_full_text(params[:query_text])
+    end
   end
 
   

@@ -1,5 +1,10 @@
 class Restaurant < ApplicationRecord
-
+    include PgSearch::Model
+    pg_search_scope :search_full_text, against: {
+        name: 'A',
+        description: 'B'
+    }
+    
     has_one_attached :photo
     
     has_many :reservations, dependent: :restrict_with_exception
