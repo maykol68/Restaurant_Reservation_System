@@ -26,15 +26,25 @@ class ReservationsController < ApplicationController
 
   def create
     @reservation = Reservation.new(reservation_params)
+    @restaurant_date = @reservation.startreservation.strftime("%F")
+    
+    pp '==============================================================='
+    pp @restaurant_date
+
+    @restaurant_reservation = Reservation.where(restaurant_id: @reservation.restaurant_id).where("startreservation > ?", Date.today )
+
+    pp @restaurant_reservation
 
     
+    if @restaurant_reservation == 15
+      redirect_to restaurants_path , alert: "Reservation was not created." 
+    else
       if @reservation.save
         redirect_to reservation_url(@reservation), notice: "Reservation was successfully created." 
-        
       else
         render :new, status: :unprocessable_entity 
-        
-      end
+      end  
+    #end
   end
 
 
