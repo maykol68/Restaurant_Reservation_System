@@ -9,6 +9,7 @@ class ReservationsController < ApplicationController
     if params[:restaurant_id]
       @reservations = @reservations.where(restaurant_id: params[:restaurant_id])
     end
+    @pagy, @reservations = pagy_countless(@reservations, items: 3)
   end
 
   def show
@@ -26,12 +27,12 @@ class ReservationsController < ApplicationController
 
   def create
     @reservation = Reservation.new(reservation_params)
-    @restaurant_date = @reservation.startreservation.strftime("%F")
+    @restaurant_date = @reservation.startreservation
     
-    pp '==============================================================='
+    pp '=' * 20
     pp @restaurant_date
 
-    @restaurant_reservation = Reservation.where(restaurant_id: @reservation.restaurant_id).where("startreservation > ?", Date.today )
+    @restaurant_reservation = Reservation.where(restaurant_id: @reservation.restaurant_id).where("startreservation > ?", @restaurant_date )
 
     pp @restaurant_reservation
 
@@ -44,7 +45,7 @@ class ReservationsController < ApplicationController
       else
         render :new, status: :unprocessable_entity 
       end  
-    #end
+    end
   end
 
 

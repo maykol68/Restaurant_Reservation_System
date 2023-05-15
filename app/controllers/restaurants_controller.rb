@@ -9,6 +9,8 @@ class RestaurantsController < ApplicationController
     if params[:query_text].present?
       @restaurants = @restaurants.search_full_text(params[:query_text])
     end
+
+    @pagy, @restaurants = pagy_countless(@restaurants, items: 3)
   end
 
   

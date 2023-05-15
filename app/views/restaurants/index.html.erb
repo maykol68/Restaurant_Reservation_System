@@ -1,15 +1,19 @@
 <div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <%= turbo_frame_tag 'home' do %>
+    <div id="restaurants" class="min-w-full">
+      <%= form_with url: restaurants_path, method: :get do |form| %>
+        <%= form.label :search %>
+        <%= form.text_field :query_text, 
+            placeholder: t('search'), 
+            onChange: 'this.form.requestSubmit()', 
+            value: params[:query_text]%><br><br>
+        <%= turbo_frame_tag "restaurants-#{@pagy.page}", class: 'restaurants' do %>
+          <%= render partial: 'restaurant', collection: @restaurants %>
+          <%= turbo_frame_tag "restaurants-#{@pagy.next}", class: 'restaurants', 
+              src: pagy_url_for(@pagy, @pagy.next), 
+              loading: :lazy if @pagy.next %>
+        <% end %>
+      <% end %>
+    </div>
   <% end %>
-  <% if alert.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="alert"><%= alert %></p>
-  <% end %>
-  <div id="restaurants" class="min-w-full">
-    <%= form_with url: restaurants_path, method: :get do |form| %>
-      <%= form.label :search %>
-      <%= form.text_field :query_text, placeholder: t('search'), onChange: 'this.form.requestSubmit()', value: params[:query_text]%><br><br>
-      <%= render @restaurants %>
-    <% end%>
-  </div>
 </div>

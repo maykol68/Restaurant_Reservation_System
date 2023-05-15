@@ -1,13 +1,35 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  description: MyString
-  address: MyString
+sabrosura:
+  name: sabrosura
+  description: lo mas sabroso
+  address: cr19 n30
+  city: choco
+
+pacifico:
+  name: pacifico
+  description: lo mas sabroso
+  address: cr19 n30
+  city: choco
+centro:
+  name: centro
+  description: lo mas sabroso
+  address: cr19 n30
   city: MyString
 
-two:
-  name: MyString
-  description: MyString
-  address: MyString
-  city: MyString
+norte:
+  name: norte
+  description: lo mas sabroso
+  address: cr19 n30
+  city: medellin
+anidino:
+  name: andino
+  description: lo mas sabroso
+  address: cr19 n30
+  city: cali
+
+sur:
+  name: sur
+  description: lo mas sabroso
+  address: cr19 n30
+  city: bogota

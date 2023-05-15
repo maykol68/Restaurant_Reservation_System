@@ -1,9 +1,5 @@
-<div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
 
-  <%= turbo_frame_tag 'restaurants' do%>
+<%= turbo_frame_tag 'restaurants' do%>
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">Reservations</h1>
   </div>
@@ -11,9 +7,12 @@
   
   <div id="reservations" class="min-w-full">
     <%= link_to t('all'), reservations_path, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium"  %>
-    <%= render partial: 'restaurant', collection: @restaurants %>
-    <%= render @reservations %>
+      <%= turbo_frame_tag  "reservations-#{@pagy.page}", class: 'reservations' do %>
+        <%= render partial: 'restaurant', collection: @restaurants %>
+        <%= render @reservations %>
+        <%= turbo_frame_tag "reservations-#{@pagy.next}", class: 'reservations', 
+            src: pagy_url_for(@pagy, @pagy.next), 
+            loading: :lazy if @pagy.next %>
+    <% end %>
   </div>
-
-  <% end%>
-</div>
+<% end%>
