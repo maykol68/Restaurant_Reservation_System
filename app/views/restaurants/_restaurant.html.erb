@@ -1,8 +1,9 @@
 <div id="<%= dom_id restaurant %>">
   
-  
+  <p>
   <%= image_tag restaurant.photo, width: 500 if restaurant.photo.attached?%>
-
+  </p>
+  
   <p class="my-5">
     <strong class="block font-medium mb-1">Name:</strong>
     <%= restaurant.name %>
@@ -23,6 +24,7 @@
     <%= restaurant.city %>
   </p>
 
+  
   <% if action_name != "show" %>
     <%= link_to "Show this restaurant", restaurant, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to 'New reservation', new_reservation_path, class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>

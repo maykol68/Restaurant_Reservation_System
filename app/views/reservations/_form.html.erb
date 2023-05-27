@@ -25,7 +25,7 @@
   </div>
 
   <div class="my-5">
-    <%= form.label :restaurant_id%>
+    <%= form.label :restaurant_id %>
     <%= form.collection_select :restaurant_id, Restaurant.all.order(name: :asc), :id, :name %>
   </div>
   <div class="inline">

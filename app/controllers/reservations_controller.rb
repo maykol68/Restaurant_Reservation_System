@@ -27,18 +27,14 @@ class ReservationsController < ApplicationController
 
   def create
     @reservation = Reservation.new(reservation_params)
-    @restaurant_date = @reservation.startreservation
+    @restaurant_date = @reservation.startreservation.to_date
     
-    pp '=' * 20
-    pp @restaurant_date
 
-    @restaurant_reservation = Reservation.where(restaurant_id: @reservation.restaurant_id).where("startreservation > ?", @restaurant_date )
-
-    pp @restaurant_reservation
+    @restaurant_reservation = Reservation.where(restaurant_id: @reservation.restaurant_id).where(startreservation: (@restaurant_date..@restaurant_date+1) ).count
 
     
     if @restaurant_reservation == 15
-      redirect_to restaurants_path , alert: "Reservation was not created." 
+      redirect_to restaurants_path , alert: "Reservation can't be created." 
     else
       if @reservation.save
         redirect_to reservation_url(@reservation), notice: "Reservation was successfully created." 
