@@ -27,8 +27,10 @@
   </div>
 
   <div class="my-5">
+   <% cities = {'Medellin'=> 1,'Cali'=>2, 'Bogota'=>3, 'Quibdo' => 4 }%>
     <%= form.label :city %>
-    <%= form.text_field :city, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <% lista = cities.sort %>
+    <%= form.select :city, lista, selected: 1 %>
   </div>
 
   <div class="my-5">

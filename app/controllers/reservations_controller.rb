@@ -58,6 +58,7 @@ class ReservationsController < ApplicationController
 
 
   def destroy
+     
     @reservation.destroy
 
     redirect_to reservations_url, notice: "Reservation was successfully destroyed." 

@@ -31,12 +31,12 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
 
     
+    
       if @restaurant.save
          redirect_to restaurant_url(@restaurant), notice: "Restaurant was successfully created." 
         
       else
          render :new, status: :unprocessable_entity 
-        
       end
   end
 
