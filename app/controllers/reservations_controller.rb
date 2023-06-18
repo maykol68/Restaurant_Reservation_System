@@ -57,7 +57,7 @@ class ReservationsController < ApplicationController
   end
 
 
-  def destroy
+  def destroyed
      
     @reservation.destroy
 
