@@ -1,0 +1,35 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+sabrosura:
+  name: sabrosura
+  description: lo mas sabroso
+  address: cr19 n30
+  city: Medellin
+
+pacifico:
+  name: pacifico
+  description: lo mas sabroso
+  address: cr19 n30
+  city: Bogota
+centro:
+  name: centro
+  description: lo mas sabroso
+  address: cr19 n30
+  city: Quibdo
+
+norte:
+  name: norte
+  description: lo mas sabroso
+  address: cr19 n30
+  city: Medellin
+anidino:
+  name: andino
+  description: lo mas sabroso
+  address: cr19 n30
+  city: Cali
+
+sur:
+  name: sur
+  description: lo mas sabroso
+  address: cr19 n30
+  city: Bogota

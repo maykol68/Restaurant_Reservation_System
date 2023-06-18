@@ -1,0 +1,19 @@
+  <div class="bg-white flex justify-between items-center px-2">
+    <%= link_to restaurants_path do %>
+        <h1 class="text-2xl hover:text-blue-500 font-bold text-teal-400 "><%= t('app_name')%></h1>
+    <% end %>
+  
+    <div class= "hidden sm:block lg:flex">
+      <% if user_signed_in? %>
+          <%= link_to "Sign Out", destroy_user_session_path, data:{
+              turbo_method: :delete,
+              turbo_confirm: t('common.confirm')}, 
+              class:"rounded-full py-3 px-5 bg-gray-400 text-white block font-medium mx-2 hover:text-red-500"  %>
+          <%= link_to 'New restaurant', new_restaurant_path, class: "rounded-full py-3 px-5 bg-gray-400 text-white block font-medium mx-2 hover:text-teal-700" %>
+
+        <% else %>
+          <%= link_to "Sign in", new_user_session_path, class: "rounded-full py-3 px-5 bg-gray-400 text-white block font-medium mx-2 hover:text-teal-700" %>
+          <%= link_to "Sign up", new_registration_path(resource_name), class: "rounded-full py-3 px-5 bg-gray-400 text-white block font-medium mx-2 hover:text-teal-700" %>
+        <% end %>
+    </div>
+  </div>

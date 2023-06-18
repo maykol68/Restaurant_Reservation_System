@@ -1,0 +1,17 @@
+  <%= turbo_frame_tag 'home' do %>
+      <%= form_with url: restaurants_path, method: :get do |form| %>
+        <%= form.label :search %>
+        <%= form.text_field :query_text,
+              placeholder: t('search'), 
+              onChange: 'this.form.requestSubmit()',
+              value: params[:query_text]%>
+      <% end %>
+    <%= turbo_frame_tag :restaurants, class: " flex flex-col m-2" do %>
+        <%= turbo_frame_tag "restaurants-#{@pagy.page}", class: 'restaurants' do %>
+            <%= render  partial: 'restaurant', collection: @restaurants %>
+            <%= turbo_frame_tag "restaurants-#{@pagy.next}", class: 'restaurants', 
+              src: pagy_url_for(@pagy, @pagy.next), 
+              loading: :lazy if @pagy.next %>
+        <% end %>
+    <% end %>
+<% end %>

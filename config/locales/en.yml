@@ -1,0 +1,5 @@
+en:
+  app_name: "Reservation"
+  search: "Search"
+  common:
+    confirm: 'Are you sure?'
